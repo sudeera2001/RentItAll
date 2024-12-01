@@ -12,9 +12,9 @@ footer{
      background-color:#243642 ;
      position: fixed;
      bottom: 0;
-     align-items: center;
+     align-items: flex-start;
      width: 100%;
-     justify-content: center;
+     justify-content: space-evenly;
      
      color: #ffffff;
    }
@@ -27,13 +27,19 @@ footer{
      padding: 20px;
    }
    table{
-    text-align: center;
     padding: 15px;
+    
+    
     
     
    }
    td{
-    padding: 10px;
+    padding: 20px;
+    justify-items: left;
+    text-align: left;
+    vertical-align: top;
+    
+    
    }
    .divide{
     border-left: 1px solid white;
@@ -45,13 +51,19 @@ footer{
 
 <body>
     <footer><table>
-        <tr><td><h3>Help & support</h3></td>
-            <td class="divide"><h3>About RentItAll</h3></td>
-            <td><h3>Download our App</h3></td>
-        </tr>
-        <tr><td><a href="FAQ.html">FAQ</a><br><a href="Contact us.html">Contact us</a></a></td>
-        <td class="divide">About us
-        </tr>
+        <tr><td><h3>Help & support</h3>
+            <a href="FAQ.html">FAQ</a><br>
+            <a href="Contact us.html">Contact us</a></td>
+            
+            <td class="divide"><h3>About RentItAll</h3>
+            <a href="About us.html">About us</a><br>
+            <a href="Terms and conditions.html">Terms and conditions</a><br>
+            <a href="Privacy policy">Privacy policy</a></td>
+            
+
+            <td><h3>Download our App</h3>
+            <img src="recources/play store.png" alt="play store" height="30px" width="100"><br>
+            <img src="recources/app store.png" alt="app store" height="30px" width="100px"></td></tr>
         </table>
         </footer>
    
