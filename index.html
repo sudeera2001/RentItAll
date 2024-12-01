@@ -2,30 +2,67 @@
 <html>
 <head>
   <style>
-    body{
-      margin: 0%;
-      padding: 0%;
-      background-image: url(recources/home\ backgroung.jpg);
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('recources/home background.jpg'); /* Make sure the image path is correct */
       background-size: cover;
-     
+      background-position: center;
+      height: 100vh; /* Ensure the body takes up the full screen height */
+      display: flex;
+      flex-direction: column;
     }
-    footer{
-      bottom: 0%;
+    
+    /* Styling for the header iframe */
+    header {
       position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-  
+      z-index: 100; /* Ensures the header is always on top */
     }
-   
-  </style>
-  
 
+    /* Footer styling */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #243642; /* Change background color as needed */
+      z-index: 90; /* Ensures the footer is below the header */
+    }
+    
+    iframe {
+      width: 100%;
+      border: none;
+      padding: 0;
+    }
+
+    /* Optional: Make the content area take up the remaining space */
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      font-size: 24px;
+    }
+  </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <iframe src="header.html" style="width: 100%; position: fixed; border: none; padding: 0px;" ></iframe>
+    <iframe src="header.html"></iframe>
   </header>
-  
-  <div><footer>
-    <iframe src="footer.html" style="width: 100%; border: none; padding: 0%;"></iframe>
-  </footer>
+
+  <!-- Main content area (optional, if you have content to display) -->
+  <div class="content">
+    <p>Welcome to RentItAll.lk</p>
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <iframe src="footer.html"></iframe>
+  </footer>
+</body>
+</html>
