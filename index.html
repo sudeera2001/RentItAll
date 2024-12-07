@@ -5,7 +5,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-image: url(recources/Untitled\ design\ \(3\).png);
+      background-image: url(recources/background.png);
       background-position: center;
       height: 100vh; /* Ensure the body takes up the full screen height */
       display: flex;
@@ -82,7 +82,9 @@
       display: flex;
       justify-content: center;
       margin-top: 20px;
-      gap: 20px; 
+      gap: 20px;
+      background-color: rgba(255, 255, 255, 0.4);
+      padding: 15px;
     }
 
     .catagory {
@@ -98,7 +100,12 @@
       border-radius: 4px;
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
       cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth animation */
       
+    }
+    .catagory:hover {
+      transform: scale(1.1); /* Enlarges the button to 1.2x its original size */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Adds a stronger shadow */
     }
 
     
