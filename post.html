@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add posting page</title>
+    <link href="stylesheet.css">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            width: 100%;
+            height: 170px; 
+            border: none;
+        }
+
+        .footer {
+            width: 100%;
+            height: 170px;
+            border: none;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+            
+        .f1{
+            border: 1px solid black;
+            padding: 20px;
+            width: 75%;
+            border-radius: 20px;
+        }
+
+
+        .item1{
+            flex-direction: row;
+        }
+
+        .name{
+            padding: 10px;
+            width: 250px;
+            background-color: lightgray;
+            border: 2px solid lightgray;
+
+        }
+
+        .description{
+            padding: 15px;
+            width: 250px;
+            background-color: lightgray;
+            border: 2px solid lightgray;
+            box-sizing: border-box;
+        }
+        .price{
+            padding: 15px;
+            width: 250px;
+            background-color: lightgray;
+            border: 2px solid lightgray;
+        } 
+        .category{
+            padding: 15px;
+            width: 250px;
+            background-color: lightgray;
+            border: 2px solid lightgray;            
+
+        }
+
+        table{
+            border: 1px solid black;
+            background-color: lightgray;
+            margin-top: 20px;
+        }
+
+        img {
+            margin: 10px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        #imageContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        #uploadButton{
+            border: 1px solid black;
+            padding: 10px;
+            width: 150px;
+            background-color: green;
+        }
+
+        #removeButton{
+            border: 1px solid black;
+            padding: 10px;
+            width: 150px;
+            background-color: red;
+
+        }
+
+        .b2{
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            justify-content: space-evenly;
+        }
+        #postAdd{
+            border: 1px solid black;
+            padding: 10px;
+            width: 150px;
+            display: flex;
+        }
+
+        #clear{
+            border: 1px solid black;
+            padding: 10px;
+            width: 150px;
+            display: flex;
+        }
+        
+    </style>
+
+
+</head>
+<body>
+    <iframe src="header.html" title="header" class="header"></iframe>
+
+    <center>
+    <form action="" method="posting" class="f1" >
+    <div class="container">
+        
+        <div class="item1">
+            <label for="name:">Name:</label>
+            <input type="text" id="name" name="name" placeholder="item name" class="name">
+            
+        </div>
+
+        
+        <div class="item2">
+            <label for="description">Description:</label>
+                <textarea name="description" placeholder="description about the item" class="description"></textarea>    
+        </div>    
+
+        
+        <div class="item3">
+            <label for="price">Price:</label>
+                <input type="text" id="price" name="price" >   
+        </div>
+
+        
+        <div class="item4">
+            <label for="category">Category:</label>
+            <div class="f4">
+                <select class="category">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>    
+        </div>
+
+        
+        <div class="item5">
+            <label for="name">Location:</label>
+            <div class="f5">
+                <input type="text" id="name" name="name">
+            </div>    
+        </div>
+    </div>
+    </form>
+    </center>
+    <table>
+        <tr>
+            <td rowspan="2">
+                <div id="imageContainer"></div>
+            </td>
+            <td width="150px">
+                <button id="uploadButton" class="uploadButton">Upload Images</button>
+            </td>
+        </tr>
+        <tr>
+            <td width="150px">
+                <button id="removeButton">Remove Last Image</button>
+            </td>
+        </tr>
+    </table>
+    
+    
+    <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+<div class="b2">
+    <button id="postAdd">Post Add</button>
+    <button id="clear">Clear</button>
+</div>    
+    <iframe src="footer.html" title="footer" class="footer"></iframe>
+
+    <script>
+        const uploadButton = document.getElementById('uploadButton');
+        const removeButton = document.getElementById('removeButton');
+        const fileInput = document.getElementById('fileInput');
+        const imageContainer = document.getElementById('imageContainer');
+
+        // Show file input dialog when button is clicked
+        uploadButton.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Display the selected images
+        fileInput.addEventListener('change', (event) => {
+            const files = Array.from(event.target.files);
+            files.forEach(file => {
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.alt = "Uploaded Image";
+                        imageContainer.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        // Remove the last image
+        removeButton.addEventListener('click', () => {
+            const images = imageContainer.querySelectorAll('img');
+            if (images.length > 0) {
+                imageContainer.removeChild(images[images.length - 1]);
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
