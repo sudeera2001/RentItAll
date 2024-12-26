@@ -31,58 +31,72 @@
             flex: 1;
             padding: 20px;
         }
-
+            
         .container{
+            width: 80%;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-            
-        .f1{
-            border: 1px solid black;
             padding: 20px;
-            width: 75%;
             border-radius: 20px;
+            align-items: space-evenly;
+            flex-wrap: nowrap;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
+        .nameandescription{
+            display: flex;
+            min-height: 100px;
+            justify-content: space-evenly;
+            align-items: center;
 
-        .item1{
-            flex-direction: row;
         }
 
-        .name{
+        #name{
             padding: 10px;
-            width: 250px;
+            
             background-color: lightgray;
             border: 2px solid lightgray;
 
         }
 
-        .description{
+        #description{
             padding: 15px;
-            width: 250px;
+            
             background-color: lightgray;
             border: 2px solid lightgray;
             box-sizing: border-box;
         }
-        .price{
-            padding: 15px;
-            width: 250px;
+
+        .pricecategoryandlocation{
+            display: flex;
+            min-height: 100px;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        #price{
+            padding: 10px;
+            
             background-color: lightgray;
             border: 2px solid lightgray;
         } 
-        .category{
+        #category{
             padding: 15px;
-            width: 250px;
+            
             background-color: lightgray;
             border: 2px solid lightgray;            
 
         }
 
+        #location{
+            padding: 10px;
+            
+            background-color: lightgray;
+            border: 2px solid lightgray;
+        }
+
         table{
-            border: 1px solid black;
+            width: 90%;
             background-color: lightgray;
             margin-top: 20px;
         }
@@ -100,17 +114,21 @@
         }
 
         #uploadButton{
-            border: 1px solid black;
-            padding: 10px;
+            border: 1px solid green;
+            padding: 13px;
             width: 150px;
             background-color: green;
+            color: white;
+            border-radius: 5px;
         }
 
         #removeButton{
-            border: 1px solid black;
-            padding: 10px;
+            border: 1px solid red;
+            padding: 13px;
             width: 150px;
             background-color: red;
+            color: white;
+            border-radius: 5px;
 
         }
 
@@ -121,17 +139,27 @@
             justify-content: space-evenly;
         }
         #postAdd{
-            border: 1px solid black;
+            border: 1px solid rgb(163, 67, 67);
             padding: 10px;
             width: 150px;
             display: flex;
+            background-color: rgb(163, 67, 67);
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 25px;
         }
 
         #clear{
-            border: 1px solid black;
+            border: 1px solid rgb(163, 67, 67);
             padding: 10px;
             width: 150px;
             display: flex;
+            background-color: rgb(163, 67, 67);
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 25px;
         }
         
     </style>
@@ -142,51 +170,47 @@
     <iframe src="header.html" title="header" class="header"></iframe>
 
     <center>
-    <form action="" method="posting" class="f1" >
-    <div class="container">
-        
-        <div class="item1">
-            <label for="name:">Name:</label>
-            <input type="text" id="name" name="name" placeholder="item name" class="name">
+        <form action="" method="posting" class="container">
+            <div class="nameandescription">
+                <div class="item1">
+                    <label for="name:">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="item name">
             
-        </div>
+                </div>
 
-        
-        <div class="item2">
-            <label for="description">Description:</label>
-                <textarea name="description" placeholder="description about the item" class="description"></textarea>    
-        </div>    
-
-        
-        <div class="item3">
-            <label for="price">Price:</label>
-                <input type="text" id="price" name="price" >   
-        </div>
-
-        
-        <div class="item4">
-            <label for="category">Category:</label>
-            <div class="f4">
-                <select class="category">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+                <div class="item2">
+                    <label for="description">Description:</label>
+                    <textarea name="description" placeholder="description about the item" id="description"></textarea>    
+                </div>
             </div>    
-        </div>
 
-        
-        <div class="item5">
-            <label for="name">Location:</label>
-            <div class="f5">
-                <input type="text" id="name" name="name">
-            </div>    
-        </div>
-    </div>
-    </form>
+            <div class="pricecategoryandlocation">
+                <div class="item3">
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" name="price" >   
+                </div>
+
+                <div class="item4">
+                    <label for="category">Category:</label>
+                    <select id="category">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+    
+                </div>
+
+                <div class="item5">
+                    <label for="name">Location:</label>
+                    <input type="text" id="location" name="name">
+                </div>
+            </div>
+        </form>
     </center>
+    
+    <center>
     <table>
         <tr>
             <td rowspan="2">
@@ -202,12 +226,12 @@
             </td>
         </tr>
     </table>
-    
+    </center>
     
     <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
 <div class="b2">
-    <button id="postAdd">Post Add</button>
-    <button id="clear">Clear</button>
+    <input type="submit" id="postAdd" value="Post Add">
+    <input type="reset" id="clear" value="Clear">
 </div>    
     <iframe src="footer.html" title="footer" class="footer"></iframe>
 
