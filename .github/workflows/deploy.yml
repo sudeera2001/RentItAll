@@ -1,26 +1,43 @@
-name: Deploy to Byet.Host
-
+name: Build and deploy
 on:
   push:
-    branches:
-      - main  # Deploy when changes are pushed to the main branch
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
+    name: Build ⛏
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Deploy files to Byet.Host
-      uses: SamKirkland/FTP-Deploy-Action@v3.1.1
-      with:
-        ftp-server: ${{ secrets.FTP_HOST }}
-        ftp-username: ${{ secrets.FTP_USERNAME }}
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./  # The directory in your repository to upload
-        git-ftp-args: --remote-root /htdocs/  # Specifies the remote path
+      - name: Checkout repository
+        uses: actions/checkout@main
+      - name: Install dependencies
+        run: npm ci
+      - name: Build dependencies
+        run: npm run build
+      - name: Archive production artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: dist
+          path: dist
+  deploy:
+    name: Deploy 🚀
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@main
+      - name: Download artifact
+        uses: actions/download-artifact@main
+        with: 
+          name: dist
+          path: dist
+      - name: Sync files to hosting
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with: 
+          server: ftpupload.net
+          username: testcicd@enterflash.com
+          password: ${{ secrets.ftp_password }}
 
 
 
