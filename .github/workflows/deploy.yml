@@ -16,9 +16,10 @@ jobs:
     - name: Deploy files to Byet.Host
       uses: SamKirkland/FTP-Deploy-Action@v3.1.1
       with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
+        ftp-server: ${{ secrets.FTP_HOST }}
+        ftp-username: ${{ secrets.FTP_USERNAME }}
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./  # Directory to upload from
         server-dir: /htdocs/  # Directory to upload to on the server
+
 
