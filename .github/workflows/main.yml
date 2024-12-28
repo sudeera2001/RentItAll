@@ -1,28 +1,21 @@
-name: Deploy to Byet.Host
-
-on:
-  push:
-    branches:
-      - main
-
+on: push
+name: 🚀 Deploy website on push
 jobs:
-  deploy:
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
+    - name: 🚚 Get latest code
       uses: actions/checkout@v3
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        fetch-depth: 0  # Make sure we fetch all history
-
-    - name: Deploy files to Byet.Host
-      uses: SamKirkland/FTP-Deploy-Action@v3.1.1
-      with:
-        ftp-server: ${{ secrets.FTP_HOST }}
-        ftp-username: ${{ secrets.FTP_USERNAME }}
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./  # Local directory to upload from
-        git-ftp-args: --auto-init --force --remote-root /htdocs/
+        server: ftpupload.net
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        protocol: ftps
+        server-dir: public_html/test-push-ftp/
 
 
 
