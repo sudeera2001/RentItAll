@@ -19,7 +19,8 @@ jobs:
         ftp-server: ${{ secrets.FTP_HOST }}
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./  # Directory to upload from
-        server-dir: /htdocs/  # Directory to upload to on the server
+        local-dir: ./  # The directory in your repository to upload
+        git-ftp-args: --remote-root /htdocs/  # Specifies the remote path
+
 
 
