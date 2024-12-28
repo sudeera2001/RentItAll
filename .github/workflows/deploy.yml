@@ -3,7 +3,7 @@ name: Deploy to Byet.Host
 on:
   push:
     branches:
-      - main  # Deploy on push to the main branch
+      - main
 
 jobs:
   deploy:
@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Make sure we fetch all history
 
     - name: Deploy files to Byet.Host
       uses: SamKirkland/FTP-Deploy-Action@v3.1.1
@@ -19,8 +21,9 @@ jobs:
         ftp-server: ${{ secrets.FTP_HOST }}
         ftp-username: ${{ secrets.FTP_USERNAME }}
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./  # Directory to upload from
-        git-ftp-args: --auto-init --force --remote-root /htdocs/  # FTP upload arguments
+        local-dir: ./  # Local directory to upload from
+        git-ftp-args: --auto-init --force --remote-root /htdocs/
+
 
 
 
