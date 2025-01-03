@@ -130,11 +130,41 @@
     </style>
 </head>
 <body>
+    <?php
+    include("connection.php");
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Retrieve form data
+        $title = isset($_POST['title']) ? $_POST['title'] : '';
+        $contact = isset($_POST['contact']) ? $_POST['contact'] : '';
+        $description = isset($_POST['description']) ? $_POST['description'] : '';
+        $category = isset($_POST['category']) ? $_POST['category'] : '';
+        $location = isset($_POST['location']) ? $_POST['location'] : '';
+    }
+        // Validate input (optional, but recommended)
+        if (!empty($title) && !empty($contact) && !empty($description) && !empty($category) && !empty($location)) {
+            // Prepare the SQL query
+            $sql = "INSERT INTO items (name, description, category, location, contact) 
+                    VALUES ('$title', '$description', '$category', '$location', '$contact')";}
+
+          // Execute the query and handle success or error
+        if (mysqli_query($conn, $sql)) {
+            echo "<p style='color: green;'>Ad posted successfully!</p>";
+        } else {
+            echo "<p style='color: red;'>Error: " . mysqli_error($conn) . "</p>";
+        }
+          
+    ?>
+
+
+
+
+
+
     <header>
         <iframe src="header.html" title="header"></iframe>
     </header>
     <!-- Hidden form -->
-    <form id="adForm" action="/submit" method="POST"></form>
+    <form id="adForm" action="postad.php" method="POST"></form>
 
     <div class="container">
         <div class="name">
