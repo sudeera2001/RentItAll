@@ -35,6 +35,11 @@
         border: none;
         
     }
+    .container{
+        max-width: 1300px;
+        justify-content: center;
+        margin: 0 auto;
+    }
     .back{
         width: 150px;
         height: 30px;
@@ -120,7 +125,7 @@
 </head>
 <body>
     <header><iframe src="header.html" class="header"></iframe></header>
-    
+    <div class="container">
     <div class="navigation"><div class="back"><button class="back" onclick="history.back()"><i class="fa fa-angle-left"></i> Back</button></div>
                             <div class="search-bar">
                                 <input type="text" placeholder="Search your items">
@@ -146,6 +151,7 @@
                 <p>Description</p>
                 </div>
             </div>
+    </div>
     </div>
    <footer><iframe src="footer.html"></iframe></footer>
 </body>
