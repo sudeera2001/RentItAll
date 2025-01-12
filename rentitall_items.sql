@@ -25,13 +25,17 @@ DROP TABLE IF EXISTS `items`;
 CREATE TABLE `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
-  `description` varchar(150) DEFAULT NULL,
   `category` varchar(45) DEFAULT NULL,
+  `image1` varchar(200) DEFAULT NULL,
+  `image2` varchar(200) DEFAULT NULL,
+  `image3` varchar(200) DEFAULT NULL,
+  `image4` varchar(200) DEFAULT NULL,
+  `image5` varchar(200) DEFAULT NULL,
+  `contact` varchar(200) DEFAULT NULL,
   `location` varchar(45) DEFAULT NULL,
-  `link` varchar(45) DEFAULT NULL,
-  `contact` varchar(45) DEFAULT NULL,
+  `description` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +44,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'car','bla bla bla','vehicle','kelaniya','D:\\UNI\\COST\\web\\guithub\\RentItAll\\recources\\t',NULL);
+INSERT INTO `items` VALUES (26,'sdvdv','null','uploads/678429852026d-picture2.jpg','uploads/678429852192f-picture1.jpg',NULL,NULL,NULL,'dvdvdv','null','vdvdv'),(27,'svs','null','uploads/67842acf47b2c-picture2.jpg','uploads/67842acf47eec-picture1.jpg',NULL,NULL,NULL,'svf','null','vfv'),(28,'bhbkjb','null','uploads/67842b67ae30c-picture1.jpg','uploads/67842b67ae65a-picture2.jpg',NULL,NULL,NULL,'sdvsdv','null','zcvcv'),(29,'fdg','null','uploads/67842eecec8e0-Rolls-Royce-Cullinan-2022-MTN-1-17-600x370.jpeg.webp','uploads/67842eececafe-home backgroung1.jpg',NULL,NULL,NULL,'erger','null','rwgrwg'),(30,'hellow','null','uploads/67843cfc2d415-Screenshot 2025-01-12 224332.png',NULL,NULL,NULL,NULL,'fwwfwefwe','null','ccccccccccccccccccccc dsfffffffffffffffffffff');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-12 19:31:58
+-- Dump completed on 2025-01-13  3:49:13
