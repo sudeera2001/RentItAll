@@ -131,27 +131,45 @@
 </head>
 <body>
     <?php
-    include("connection.php");
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Retrieve form data
-        $title = isset($_POST['title']) ? $_POST['title'] : '';
-        $contact = isset($_POST['contact']) ? $_POST['contact'] : '';
-        $description = isset($_POST['description']) ? $_POST['description'] : '';
-        $category = isset($_POST['category']) ? $_POST['category'] : '';
-        $location = isset($_POST['location']) ? $_POST['location'] : '';
-    }
-        // Validate input (optional, but recommended)
-        if (!empty($title) && !empty($contact) && !empty($description) && !empty($category) && !empty($location)) {
-            // Prepare the SQL query
-            $sql = "INSERT INTO items (name, description, category, location, contact) 
-                    VALUES ('$title', '$description', '$category', '$location', '$contact')";}
+   
+   include("connection.php");
+   
+   // Check if the request method is POST
+   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+       // Retrieve form data and validate inputs
+       $title = isset($_POST['title']) ? trim($_POST['title']) : '';
+       $contact = isset($_POST['contact']) ? trim($_POST['contact']) : '';
+       $description = isset($_POST['description']) ? trim($_POST['description']) : '';
+       $category = isset($_POST['category']) ? trim($_POST['category']) : '';
+       $location = isset($_POST['location']) ? trim($_POST['location']) : '';
+   
+       // Validate input (all fields must be filled)
+       if (!empty($title) && !empty($contact) && !empty($description) && !empty($category) && !empty($location)) {
+           // Use a prepared statement to prevent SQL injection
+           $stmt = $conn->prepare("INSERT INTO items (name, description, category, location, contact) VALUES (?, ?, ?, ?, ?)");
+           $stmt->bind_param("sssss", $title, $description, $category, $location, $contact);
+   
+           // Execute the query and handle success or error
+           if ($stmt->execute()) {
+               echo "<p style='color: green;'>Ad posted successfully!</p>";
+           } else {
+               echo "<p style='color: red;'>Error: " . $stmt->error . "</p>";
+           }
+   
+           // Close the statement
+           $stmt->close();
+       } else {
+           // Show an error message if fields are missing
+           echo "<p style='color: red;'>All fields are required!</p>";
+       }
+   } else {
+       echo "<p style='color: red;'>Invalid request method.</p>";
+   }
+   
+   // Close the database connection
+   $conn->close();
 
-          // Execute the query and handle success or error
-        if (mysqli_query($conn, $sql)) {
-            echo "<p style='color: green;'>Ad posted successfully!</p>";
-        } else {
-            echo "<p style='color: red;'>Error: " . mysqli_error($conn) . "</p>";
-        }
+   
           
     ?>
 
@@ -161,7 +179,7 @@
 
 
     <header>
-        <iframe src="header.html" title="header"></iframe>
+        <iframe src="header.php" title="header"></iframe>
     </header>
     <!-- Hidden form -->
     <form id="adForm" action="postad.php" method="POST"></form>
