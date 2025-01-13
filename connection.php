@@ -1,6 +1,6 @@
 <?php
 // Database configuration
-$host = "198.45.114.194";       // Hostname (e.g., localhost or IP address)
+$host = "cloud3.googiehost.com";       // Hostname (e.g., localhost or IP address)
 $username = "rentital_root";        // Database username
 $password = "rentitall@123456";            // Database password
 $database = "rentital_rentitall"; // Database name
