@@ -3,16 +3,15 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-    body{
-        justify-content: center;
-        align-items: center;
-    }
+        body{
+            margin: 0;
+        }
     .header {
     width: 100%;
     height: 140px; 
     border: none;
     left: 0;
-    position: relative;
+    position: sticky;
             }
     footer {
     width: 100%;
@@ -28,18 +27,22 @@
         height: 100%;
         bottom: 0;
         padding: 0;
+        position: fixed;
+        
     }
     iframe{
         height: 170px;
         bottom: 0;
         width: 100%;
         border: none;
+        position: sticky;
         
     }
     .container{
         max-width: 1300px;
         justify-content: center;
         margin: 0 auto;
+        margin-bottom: 170px;
     }
     .back{
         width: 150px;
@@ -91,22 +94,8 @@
         display: flex;
         margin-left: 10px;
         margin-right: 10px;
-        justify-content: center;
+        justify-content: space-between;
     }
-    .leftnavigation{
-        display: flex;
-        flex-direction: column;
-        width: 150px;
-        background-color:#629584;
-        color: white;
-        text-align: left;
-        padding-left: 20px;
-        padding-bottom: 20px;
-        margin-top: 20px;
-        margin-right:10px;
-        box-sizing:content-box;
-    }
-   
     .items{
         background-color: #E2F1E7;
         display: flex;
@@ -116,7 +105,7 @@
         box-sizing: border-box;
         padding: 10px;
         gap: 10px;
-        
+         
     }
     .item{
         display: flex;
@@ -128,47 +117,65 @@
         width:30%;
         max-width: 250px;
         height: auto;
+
     }
     .details{
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         
+        
     }
     </style>
 </head>
 <body>
     <header><iframe src="header.php" class="header"></iframe></header>
-   <div class="container"> 
-    <div class="navigation"><div class="back"><button class="back" onclick="history.back()"><i class="fa fa-angle-left"></i> Back</button></div>
-                            <div class="search-bar">
-                                <input type="text" placeholder="Search your items">
-                                <button>Search</button>
-                              </div>
-    </div>
-    <div class = body1>
-        <div class="leftnavigation">
-            <h4>Categories</h4>
-            <br>
-            <p>Vehicles</p>
-            <p>Properties</p>
-            <p>Tools</p>
-            <p>Party Items</p>
-            <p>Others</p>
+    <div class="container">
+        <div class="navigation">
+            <div class="back"><button class="back" onclick="history.back()"><i class="fa fa-angle-left"></i> Back</button></div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search your items">
+                <button>Search</button>
+            </div>
         </div>
 
-        <div class="items">
-            <div class="item">
-                <img src="recources/test.jpg">
-                <div class="details">
-                <p>Masserati</p>
-                <p>price:</p>
-                <p>location</p>
-                <p>example</p>
-                </div>
+        <div class="body1">
+            <div class="items">
+                <?php
+                include("connection.php");
+                // Query to fetch item details from the database
+                $sql = "SELECT * FROM items";
+                $result = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    // Loop through each row and fetch data
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $name = $row['name'];
+                        $category = $row['category'];
+                        $description = $row['description'];
+                        $location = $row['location'];
+                        $image = $row['image1'];  // Assuming the image is stored as a relative file path
+                        ?>
+                        <div class="item">
+                            <img src="<?php echo $image; ?>" alt="Item Image">
+                            <div class="details">
+                                <p><strong>Name:</strong> <?php echo $name; ?></p>
+                                <p><strong>Location:</strong> <?php echo $location; ?></p>
+                                <p><strong>Description:</strong> <?php echo $description; ?></p>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo "<p>No items found.</p>";
+                }
+
+                // Close the database connection
+                mysqli_close($conn);
+                ?>
+            </div>
         </div>
     </div>
-    </div>
-   <footer><iframe src="footer.html"></iframe></footer>
+    <footer><iframe src="footer.html"></iframe></footer>
 </body>
 </html>

@@ -106,7 +106,14 @@
         margin-right:10px;
         box-sizing:content-box;
     }
-   
+    .items{
+        background-color: #E2F1E7;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 20px;
+        box-sizing: border-box;
+    }
     .items{
         background-color: #E2F1E7;
         display: flex;
@@ -138,7 +145,7 @@
     </style>
 </head>
 <body>
-    <header><iframe src="header.php" class="header"></iframe></header>
+    <header><iframe src="header.html" class="header"></iframe></header>
    <div class="container"> 
     <div class="navigation"><div class="back"><button class="back" onclick="history.back()"><i class="fa fa-angle-left"></i> Back</button></div>
                             <div class="search-bar">
