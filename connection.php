@@ -2,8 +2,8 @@
 // Database configuration
 $host = "DA PMA SignOn";       // Hostname (e.g., localhost or IP address)
 $username = "root";        // Database username
-$password = "";            // Database password
-$database = "rentitall@123456"; // Database name
+$password = "rentitall@123456";            // Database password
+$database = "rentital_rentitall"; // Database name
 
 // Create a connection
 $conn = new mysqli($host, $username, $password, $database);
