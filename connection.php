@@ -1,9 +1,9 @@
 <?php
 // Database configuration
-$host = "127.0.0.1";       // Hostname (e.g., localhost or IP address)
-$username = "root";        // Database username
-$password = "";            // Database password
-$database = "rentitall"; // Database name
+$host = "cloud3.googiehost.com";       // Hostname (e.g., localhost or IP address)
+$username = "rentital__jsmqCik67zs9qisp8K1ViyDSNRcyHxUS@localhost";        // Database username
+$password = "rentitall@123456";            // Database password
+$database = "rentital_rentitall"; // Database name
 
 // Create a connection
 $conn = new mysqli($host, $username, $password, $database);
