@@ -130,15 +130,25 @@
 // Include database connection
 include("connection.php");
 
-// Fetch the search term from URL parameters (if any)
+// Fetch category and search term from URL parameters
+$category = isset($_GET["category"]) ? $_GET["category"] : "all";
 $searchTerm = isset($_GET["search"]) ? mysqli_real_escape_string($conn, $_GET["search"]) : "";
 
-// Base query to fetch all items
+// Base query to fetch items
 $query = "SELECT * FROM items";
 
-// Modify query based on the search term (if provided)
-if (!empty($searchTerm)) {
-    $query .= " WHERE (name LIKE '%$searchTerm%' OR description LIKE '%$searchTerm%' OR location LIKE '%$searchTerm%')";
+// Modify query based on category and search term
+if ($category !== "all" || !empty($searchTerm)) {
+    $query .= " WHERE";
+    if ($category !== "all") {
+        $query .= " category = '" . mysqli_real_escape_string($conn, $category) . "'";
+    }
+    if (!empty($searchTerm)) {
+        if ($category !== "all") {
+            $query .= " AND";
+        }
+        $query .= " (name LIKE '%$searchTerm%' OR description LIKE '%$searchTerm%' OR location LIKE '%$searchTerm%')";
+    }
 }
 
 $result = mysqli_query($conn, $query);
@@ -155,6 +165,7 @@ $result = mysqli_query($conn, $query);
         <div class="search-bar">
             <!-- Form to handle search -->
             <form method="GET" action="browse.php">
+                <input type="hidden" name="category" value="<?php echo $category; ?>">
                 <input type="text" name="search" placeholder="Search your items" value="<?php echo htmlspecialchars($searchTerm); ?>">
                 <button type="submit">Search</button>
             </form>
@@ -165,7 +176,6 @@ $result = mysqli_query($conn, $query);
         <!-- Left Navigation (Categories) -->
         <div class="leftnavigation">
             <h4>Categories</h4>
-            <p onclick="window.location.href='browse.php'">All Ads</p>
             <p onclick="window.location.href='browse.php?category=vehicles'">Vehicles</p>
             <p onclick="window.location.href='browse.php?category=properties'">Properties</p>
             <p onclick="window.location.href='browse.php?category=tools'">Tools</p>

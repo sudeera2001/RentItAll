@@ -109,6 +109,9 @@
       transform: scale(1.1); /* Enlarges the button to 1.2x its original size */
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Adds a stronger shadow */
     }
+    a{
+      color: white;
+    }
 
     
   </style>
@@ -125,17 +128,30 @@
   
     <!-- Search bar -->
     <div class="search-bar">
-      <input type="text" placeholder="What do you want for rent?">
-      <button>Search</button>
+      <form id="search" action="browse.php" method="get">
+        <input type="text" name="search" placeholder="What do you want for rent?" />
+        <button type="submit">Search</button>
+      </form>
     </div>
+    
 
     <!-- Categories -->
     <div class="catagories">
-      <div class="catagory">Vehicles</div>
-      <div class="catagory">Property</div>
-      <div class="catagory">Tools</div>
-      <div class="catagory">Party Items</div>
-      <div class="catagory">Others</div>
+      <a href="browse.php?category=vehicles">
+        <div class="catagory">Vehicles</div>
+      </a>
+      <a href="browse.php?category=property">
+        <div class="catagory">Property</div>
+      </a>
+      <a href="browse.php?category=tools">
+        <div class="catagory">Tools</div>
+      </a>
+      <a href="browse.php?category=party_items">
+        <div class="catagory">Party Items</div>
+      </a>
+      <a href="browse.php?category=others">
+        <div class="catagory">Others</div>
+      </a>
     </div>
   </div>
 

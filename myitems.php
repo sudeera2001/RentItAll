@@ -111,11 +111,12 @@
         display: flex;
         gap: 10px;
         background-color: #c9c9c9;
-        max-height: 150px;
+        max-height: 200px;
+        
     }
     img{
         width:30%;
-        max-width: 250px;
+        max-width: 200px;
         height: auto;
 
     }
@@ -154,7 +155,8 @@
                         $category = $row['category'];
                         $description = $row['description'];
                         $location = $row['location'];
-                        $image = $row['image1'];  // Assuming the image is stored as a relative file path
+                        $image = $row['image1'];
+                        $contact = $row['contact'];
                         ?>
                         <div class="item">
                             <img src="<?php echo $image; ?>" alt="Item Image">
@@ -162,6 +164,7 @@
                                 <p><strong>Name:</strong> <?php echo $name; ?></p>
                                 <p><strong>Location:</strong> <?php echo $location; ?></p>
                                 <p><strong>Description:</strong> <?php echo $description; ?></p>
+                                <p><strong>Contact:</strong><?php echo $contact; ?></p>
                             </div>
                         </div>
                         <?php
