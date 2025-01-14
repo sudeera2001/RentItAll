@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audi A8 Facelift Long Wheel 2014</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+		
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .image-gallery {
+            text-align: center;
+            margin-bottom: 20px;
+		
+        }
+
+        .main-image, .pic-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+	    
+        }
+
+        .pic-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .pic-container img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+
+	.details table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .details th, .details td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .details th {
+        background-color: #f4f4f4;
+    }
+       
+
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 8px;
+        }
+
+        .lightbox:target {
+            display: flex;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .close:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Audi A8 FACELIFT LONG WHEEL 2014</h1>
+        <p>Posted on 12 Jan 10:39 pm, Colombo 3, Colombo</p>
+        <div class="image-gallery">
+            <a href="#lightbox1"><img src="D:\html\project\car.jpg" alt="Audi A8" class="main-image"></a>
+            <div class="pic-container">
+                <a href="#lightbox2"><img src="D:\html\project\side.jpg" alt="side"></a>
+                <a href="#lightbox3"><img src="D:\html\project\back.jpg" alt="back"></a>
+                <a href="#lightbox4"><img src="D:\html\project\inside2.jpg" alt="inside2"></a>
+                <a href="#lightbox5"><img src="D:\html\project\inside1.jpg" alt="inside1"></a>
+            </div>
+        </div>
+        <div class="details">
+    <h2>Rs 32,500,000</h2>
+    <table>
+        <tr>
+            <th>Brand</th>
+            <td>Audi</td>
+        </tr>
+        <tr>
+            <th>Model</th>
+            <td>A8</td>
+        </tr>
+        <tr>
+            <th>Trim / Edition</th>
+            <td>FACELIFT LONG WHEEL</td>
+        </tr>
+        <tr>
+            <th>Year of Manufacture</th>
+            <td>2014</td>
+        </tr>
+        <tr>
+            <th>Condition</th>
+            <td>Used</td>
+        </tr>
+        <tr>
+            <th>Transmission</th>
+            <td>Tiptronic</td>
+        </tr>
+    </table>
+</div>
+
+    </div>
+
+    <!-- Lightbox containers -->
+    <div id="lightbox1" class="lightbox">
+        <a href="#" class="close">×</a>
+        <img src="D:\html\project\car.jpg" alt="Audi A8">
+    </div>
+    <div id="lightbox2" class="lightbox">
+        <a href="#" class="close">×</a>
+        <img src="D:\html\project\side.jpg" alt="Side View">
+    </div>
+    <div id="lightbox3" class="lightbox">
+        <a href="#" class="close">×</a>
+        <img src="D:\html\project\back.jpg" alt="Back View">
+    </div>
+    <div id="lightbox4" class="lightbox">
+        <a href="#" class="close">×</a>
+        <img src="D:\html\project\inside2.jpg" alt="Inside View 2">
+    </div>
+    <div id="lightbox5" class="lightbox">
+        <a href="#" class="close">×</a>
+        <img src="D:\html\project\inside1.jpg" alt="Inside View 1">
+    </div>
+</body>
+</html>
+pic-
