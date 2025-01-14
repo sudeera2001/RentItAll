@@ -187,8 +187,8 @@ $result = mysqli_query($conn, $query);
                     $image = htmlspecialchars($row['image1']);
                     $contact = htmlspecialchars($row['contact']);
                     ?>
-                    <a href="page.html" class="item">
-                        <img src="<?php echo $image; ?>" alt="Item Image">
+                    <div class="item">
+                    <img src="<?php echo $image; ?>" alt="Item Image">
                         <div class="details">
                             <p><strong>Name:</strong> <?php echo $name; ?></p>
                             <p><strong>Location:</strong> <?php echo $location; ?></p>
