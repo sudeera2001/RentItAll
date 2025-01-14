@@ -105,6 +105,8 @@
             padding: 10px;
             gap: 15px;
             align-items: center;
+            text-decoration: none;
+            color: inherit;
         }
         .item img {
             width: 150px;
@@ -185,7 +187,7 @@ $result = mysqli_query($conn, $query);
                     $image = htmlspecialchars($row['image1']);
                     $contact = htmlspecialchars($row['contact']);
                     ?>
-                    <div class="item">
+                    <a href="page.html" class="item">
                         <img src="<?php echo $image; ?>" alt="Item Image">
                         <div class="details">
                             <p><strong>Name:</strong> <?php echo $name; ?></p>
@@ -193,7 +195,7 @@ $result = mysqli_query($conn, $query);
                             <p><strong>Description:</strong> <?php echo $description; ?></p>
                             <p><strong>Contact:</strong> <?php echo $contact; ?></p>
                         </div>
-                    </div>
+                    </a>
                     <?php
                 }
             } else {
