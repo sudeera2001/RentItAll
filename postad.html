@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* CSS remains unchanged */
+        body {
+            margin: 0;
+            border: none;
+            left: 0;
+            top: 0;
+            font-size: larger;
+            justify-items: center;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+        }
+        footer {
+            height: 170px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #243642;
+            z-index: 90;
+        }
+        iframe {
+            width: 100%;
+            border: none;
+            padding: 0;
+            height: 170px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            margin-left: 5%;
+            margin-right: 5%;
+            gap: 20px;
+            row-gap: 30%;
+            column-gap: 5%;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 800px;
+            flex-wrap: wrap;
+        }
+        .name {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .contact {
+            grid-column: 1;
+            grid-row: 2;
+            height: 120%;
+        }
+        .description {
+            grid-column: 2 / span 2;
+            grid-row: 1;
+        }
+        .category {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .location {
+            grid-column: 3;
+            grid-row: 2;
+        }
+        input {
+            width: 100%;
+            height: 50%;
+            max-width: 300px;
+            background-color: lightgray;
+            border: none;
+        }
+        select {
+            width: 100%;
+            height: 70%;
+            max-width: 300px;
+            background-color: lightgray;
+            border: none;
+        }
+        textarea {
+            width: 100%;
+            height: 100%;
+            resize: none;
+            box-sizing: border-box;
+            background-color: lightgrey;
+            border: none;
+        }
+        .imagebox {
+            display: flex;
+            background-color: lightgrey;
+            margin-top: 100px;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 1000px;
+            justify-content: center;
+            box-sizing: border-box;
+            padding: 1%;
+        }
+        h4 {
+            margin: 1%;
+            color: #053f18;
+        }
+        .imagebox input {
+            width: 18%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+        .addbottons {
+            display: flex;
+            flex-direction: column;
+            width: 17%;
+            margin-top: 1%;
+        }
+        button {
+            background-color: rgb(163, 67, 67);
+            border: none;
+            cursor: pointer;
+            color: white;
+            min-height: 30px;
+        }
+        .savemenu {
+            display: flex;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 1000px;
+            justify-content: right;
+            box-sizing: border-box;
+            gap: 2%;
+            margin-top: 20px;
+        }
+        .savemenu button {
+            width: 13%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <iframe src="header.php" title="header"></iframe>
+    </header>
+    <!-- Hidden form -->
+    <form id="adForm" action="postad.php" method="POST" enctype="multipart/form-data"></form>
+
+    <div class="container">
+        <div class="name">
+            <label for="title">Title</label><br>
+            <input type="text" id="title" name="title" form="adForm">
+        </div>
+        <div class="contact">
+            <label for="contact">Contact</label><br>
+            <input type="text" id="contact" name="contact" form="adForm">
+        </div>
+        <div class="description">
+            <label for="description">Description</label><br>
+            <textarea id="description" name="description" form="adForm"></textarea>
+        </div>
+        <div class="category">
+            <label for="category">Category</label><br>
+            <select id="category" name="category" form="adForm">
+                <option value="Vehicles">Vehicles</option>
+                <option value="Property">Property</option>
+                <option value="Tools">Tools</option>
+            </select>
+        </div>
+        <div class="location">
+            <label for="location">Location</label><br>
+            <select id="location" name="location" form="adForm">
+                <option value="null">null</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="imagebox">
+        <center>
+            <h4>Add item images</h4>
+            <div>
+                <input type="file" id="image1" name="images[]" accept="image/*" form="adForm">
+                <input type="file" id="image2" name="images[]" accept="image/*" form="adForm">
+                <input type="file" id="image3" name="images[]" accept="image/*" form="adForm">
+                <input type="file" id="image4" name="images[]" accept="image/*" form="adForm">
+                <input type="file" id="image5" name="images[]" accept="image/*" form="adForm">
+            </div>
+        </center>
+    </div>
+
+    <div class="savemenu">
+        <button type="button" onclick="window.location.reload()">Cancel</button>
+        <button type="reset" form="adForm" id="clearButton">Clear</button>
+        <button type="submit" form="adForm">Post Ad</button>
+    </div>
+
+    <script>
+        const imageInputs = document.querySelectorAll('.imagebox input[type="file"]');
+        const clearButton = document.querySelector('#clearButton'); // Add an ID to your clear button
+
+        // Preview the image on file selection
+        imageInputs.forEach(input => {
+            input.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        input.style.backgroundImage = `url(${event.target.result})`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        // Clear selected images and reset background
+        clearButton.addEventListener('click', () => {
+            imageInputs.forEach(input => {
+                input.value = ''; // Clear the selected file
+                input.style.backgroundImage = ''; // Reset the background image
+            });
+        });
+    </script>
+
+    <footer>
+        <iframe src="footer.html"></iframe>
+    </footer>
+</body>
+</html>
